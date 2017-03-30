@@ -37,6 +37,14 @@ const romanNumeralGenerator = function(number) {
   return romanNumeral.join("");
 };
 
+const numberGenerator = function(romanNumeral) {
+  let number = 0
+  for (let i=(numeralKeys.length - 1); i >= 0 ; i --) {
+    romanNumeral.replace(/ + romanNumerals[numeralKeys[i]] + /, "")
+    number += Number(numeralKeys[i]);
+  };
+};
+
 //Front-end Logic:
 $(document).ready(function() {
   $("#formOne").submit(function(event) {
