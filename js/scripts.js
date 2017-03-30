@@ -1,12 +1,12 @@
 //Back-end Logic:
 var romanNumerals = {
-  number1: "I",
-  number5: "V",
-  number10: "X",
-  number50: "L",
-  number100: "C",
-  number500: "D",
-  number1000: "M",
+  1: "I",
+  5: "V",
+  10: "X",
+  50: "L",
+  100: "C",
+  500: "D",
+  1000: "M",
 };
 //Front-end Logic:
 $(document).ready(function() {
@@ -14,6 +14,6 @@ $(document).ready(function() {
     event.preventDefault();
     var userInput = $("#romanInput").val();
 
-    $("#romanResult").text(romanNumerals.number1);
+    $("#romanResult").text(romanNumerals[userInput]);
   });
 });
