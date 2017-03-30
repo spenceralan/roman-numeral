@@ -9,39 +9,53 @@ const romanNumerals = {
   1000: "M",
 };
 
+const numeralKeys = Object.keys(romanNumerals);
+
+
 const romanNumeralGenerator = function(number) {
-  // debugger;
   let romanNumeral = [];
-  while ( number >= 1000) {
-    romanNumeral.push([romanNumerals["1000"]]);
-    number -= 1000;
-  };
-  while ( number >= 500) {
-    romanNumeral.push([romanNumerals["500"]]);
-    number -= 500;
-  };
-  while ( number >= 100) {
-    romanNumeral.push([romanNumerals["100"]]);
-    number -= 100;
-  };
-  while ( number >= 50) {
-    romanNumeral.push([romanNumerals["50"]]);
-    number -= 50;
-  };
-  while ( number >= 10) {
-    romanNumeral.push([romanNumerals["10"]]);
-    number -= 10;
-  };
-  while ( number >= 5) {
-    romanNumeral.push([romanNumerals["5"]]);
-    number -= 5;
-  };
-  while ( number >= 1) {
-    romanNumeral.push([romanNumerals["1"]]);
-    number -= 1;
+  for (let i=6; i >= 0 ; i --) {
+    if (number < numeralKeys[i]) {
+      continue;
+    };
+    while (number >= numeralKeys[i]) {
+      romanNumeral.push([romanNumerals[numeralKeys[i]]]);
+      number -= numeralKeys[i];
+    };
   };
   return romanNumeral.join("");
 };
+
+
+
+  // while ( number >= 1000) {
+  //   romanNumeral.push([romanNumerals["1000"]]);
+  //   number -= 1000;
+  // };
+  // while ( number >= 500) {
+  //   romanNumeral.push([romanNumerals["500"]]);
+  //   number -= 500;
+  // };
+  // while ( number >= 100) {
+  //   romanNumeral.push([romanNumerals["100"]]);
+  //   number -= 100;
+  // };
+  // while ( number >= 50) {
+  //   romanNumeral.push([romanNumerals["50"]]);
+  //   number -= 50;
+  // };
+  // while ( number >= 10) {
+  //   romanNumeral.push([romanNumerals["10"]]);
+  //   number -= 10;
+  // };
+  // while ( number >= 5) {
+  //   romanNumeral.push([romanNumerals["5"]]);
+  //   number -= 5;
+  // };
+  // while ( number >= 1) {
+  //   romanNumeral.push([romanNumerals["1"]]);
+  //   number -= 1;
+  // };
 
 //Front-end Logic:
 $(document).ready(function() {
@@ -49,6 +63,6 @@ $(document).ready(function() {
     event.preventDefault();
     var userInput = $("#romanInput").val();
 
-    $("#romanResult").text(romanNumeralGenerator(userInput));
+    $("#romanResult").text(romanNumeralGenerator(Number(userInput)));
   });
 });
