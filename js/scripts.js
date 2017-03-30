@@ -1,20 +1,23 @@
 //Back-end Logic:
 const romanNumerals = {
   1: "I",
+  4: "IV",
   5: "V",
+  9: "IX",
   10: "X",
   50: "L",
+  90: "XC",
   100: "C",
   500: "D",
+  900: "CM",
   1000: "M",
 };
 
 const numeralKeys = Object.keys(romanNumerals);
 
-
 const romanNumeralGenerator = function(number) {
   let romanNumeral = [];
-  for (let i=6; i >= 0 ; i --) {
+  for (let i=(numeralKeys.length - 1); i >= 0 ; i --) {
     if (number < numeralKeys[i]) {
       continue;
     };
@@ -25,37 +28,6 @@ const romanNumeralGenerator = function(number) {
   };
   return romanNumeral.join("");
 };
-
-
-
-  // while ( number >= 1000) {
-  //   romanNumeral.push([romanNumerals["1000"]]);
-  //   number -= 1000;
-  // };
-  // while ( number >= 500) {
-  //   romanNumeral.push([romanNumerals["500"]]);
-  //   number -= 500;
-  // };
-  // while ( number >= 100) {
-  //   romanNumeral.push([romanNumerals["100"]]);
-  //   number -= 100;
-  // };
-  // while ( number >= 50) {
-  //   romanNumeral.push([romanNumerals["50"]]);
-  //   number -= 50;
-  // };
-  // while ( number >= 10) {
-  //   romanNumeral.push([romanNumerals["10"]]);
-  //   number -= 10;
-  // };
-  // while ( number >= 5) {
-  //   romanNumeral.push([romanNumerals["5"]]);
-  //   number -= 5;
-  // };
-  // while ( number >= 1) {
-  //   romanNumeral.push([romanNumerals["1"]]);
-  //   number -= 1;
-  // };
 
 //Front-end Logic:
 $(document).ready(function() {
