@@ -18,8 +18,8 @@ const romanNumerals = {
 const numeralKeys = Object.keys(romanNumerals);
 
 const romanNumeralGenerator = function(number) {
-  if (number >= 4000) {
-    return "Roman numerals can only count to 3,999."
+  if (number >= 4000 || number < 0 ) {
+    return "Roman numerals can only count from 1 to 3,999."
   };
   if (number === 0) {
     return "Nulla."
